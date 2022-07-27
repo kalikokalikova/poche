@@ -18,6 +18,20 @@ async function translateMe(e) {
         headers: { "Content-Type": "application/json" }
 
     });
-    console.log(await res.json());
+    result = await res.json();
+
+    // ??? Will it ever be the case that this object tries to populate with results that haven't arrived yet?
+    translationData = {
+        en: term,
+        fr: result.translatedText
+    };
+    populateForm(translationData);
 };
 
+function populateForm(translationData) {
+    // TODO this div will be hidden by default and be shown when form is populated
+    document.getElementById("result-div").style.backgroundColor = "aquamarine";
+    document.getElementById("term-to-translate").value = "";
+    document.getElementById("english").value = translationData.en;
+    document.getElementById("french").value = translationData.fr;
+};

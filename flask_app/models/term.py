@@ -14,4 +14,12 @@ class Term:
         self.created_at = data['created_at']
         self.updated_at = data['updated_at']
 
+    @classmethod
+    def save(cls, data):
+        print(data)
+        return True
+
+    @classmethod
+    def validate_inputs(cls, data):
+        return True
 

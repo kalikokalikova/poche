@@ -13,9 +13,20 @@
             <input type="text" name="term" id="term-to-translate">
             <input type="submit" value="Translate">
         </form>
+        <div id="result-div">
+            <form action="/save_translation" method="post" id="translation-result">
+                <label for="english">English</label>
+                <input type="text" name="english" id="english" value="">
+                
+                <label for="french">French</label>
+                <input type="text" name="french" id="french" value="">
+                <textarea name="notes" cols="30" rows="10" placeholder="Any notes you'd like to make about this translation?"></textarea>
+                <button>Save Translation</button>
+            </form>
+        </div>
     </div>
-    <script src="static/script.js"></script>
+    
 
-        
+    <script src="static/script.js"></script>    
 </body>
 </html>
