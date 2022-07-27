@@ -1,7 +1,6 @@
 from config.mysqlconnection import connectToMySQL
-import urllib
-API_KEY = "562895d5-7b5a-494a-81ec-5743c8220523"
-# from libretranslatepy import LibreTranslateAPI
+from flask import flash
+
 
 
 class Term:
@@ -17,9 +16,12 @@ class Term:
     @classmethod
     def save(cls, data):
         print(data)
-        return True
+        query = "insert into terms (users_id, en, fr, notes) values ( %(user_id)s, %(en)s, %(fr)s, %(notes)s );"
+        return connectToMySQL('poche_schema').query_db(query, data)
 
-    @classmethod
-    def validate_inputs(cls, data):
-        return True
+    @staticmethod
+    def validate_inputs(data):
+        # checking that both strings are not empty
+        #TODO flash messaging
+        return data['en'] and data['fr']
 

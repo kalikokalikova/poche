@@ -5,6 +5,7 @@ async function translateMe(e) {
 
     var term = document.getElementById('term-to-translate').value
     console.log(term)
+    // TODO validations on the search term, non-empty, string, ect.
 
     const res = await fetch("https://libretranslate.com/translate", {
         method: "POST",
@@ -19,6 +20,7 @@ async function translateMe(e) {
 
     });
     result = await res.json();
+    // TODO put in some kind of waiting messaging, perhaps a party cat?
 
     // ??? Will it ever be the case that this object tries to populate with results that haven't arrived yet?
     translationData = {

@@ -16,7 +16,7 @@ def index():
 @app.route('/save_translation', methods=['post'])
 def save_translation():
     term = {
-        'users_id': session['user_id'],
+        'user_id': session['user_id'],
         'en': request.form['english'],
         'fr': request.form['french'],
         'notes': request.form['notes']
