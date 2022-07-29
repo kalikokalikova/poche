@@ -9,7 +9,9 @@ from flask_app.models.term import Term
 @app.route('/')
 def index():
     if 'user_id' in session:
-        return render_template('index.html')
+        data = { 'id': session['user_id'] }
+        terms = Term.get_all(data)
+        return render_template('index.html', terms=terms)
     else:
         return redirect('/register_or_login')
 
@@ -28,6 +30,34 @@ def save_translation():
         return redirect('/')
     print(request.form)
     return redirect('/')
+
+@app.route('/view_term/<id>')
+def view_term(id):
+    data = { 'id': id }
+    term = Term.get_term_by_id(data)
+    if term:
+        print(term)
+        return render_template('view_term.html', term=term)
+    else:
+        redirect('/')
+
+@app.route('/update_term', methods=['post'])
+def update_term():
+    data = {
+        'id': request.form['id'],
+        'notes': request.form['notes']
+    }
+    Term.update_term(data)
+    return redirect(f'/view_term/{request.form["id"]}')
+
+@app.route('/browse_terms')
+def browse_terms():
+    if 'user_id' in session:
+        data = { 'id': session['user_id'] }
+        list_of_term_dicts = Term.get_fr_terms_to_browse(data)
+        return render_template('browse_terms.html', list_of_term_dicts=list_of_term_dicts)
+    else:
+        return redirect('/register_or_login')
 
 
 

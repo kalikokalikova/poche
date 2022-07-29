@@ -37,3 +37,8 @@ function populateForm(translationData) {
     document.getElementById("english").value = translationData.en;
     document.getElementById("french").value = translationData.fr;
 };
+
+function activateSave() {
+    button = document.getElementsByClassName("save-term")[0];
+    console.log(button);
+};

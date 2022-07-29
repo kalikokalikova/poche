@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Term</title>
+</head>
+<body>
+    <div class="container">
+        <p>English: <span>{{ term.en }}</span></p>
+        <p>French: <span>{{ term.fr }}</span></p>
+        <p>
+            <form action="/update_term" method="post">
+                <input type="hidden" name="id" value="{{term.id}}">
+                <label for="notes">Notes:</label>
+                <textarea name="notes" cols="30" rows="10" oninput="activateSave()">{{ term.notes }}</textarea>
+                <button class="save-term">Save</button>
+            </form>
+        </p>
+    </div>
+    <script src="/static/script.js"></script>
+</body>
+</html>

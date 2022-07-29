@@ -9,6 +9,7 @@
 <body>
     <div class="container">
         <h1>YOu're IN</h1>
+        <a href="/logout"><button>You're out</button></a>
         <form onsubmit="translateMe(event)">
             <input type="text" name="term" id="term-to-translate">
             <input type="submit" value="Translate">
@@ -23,6 +24,14 @@
                 <textarea name="notes" cols="30" rows="10" placeholder="Any notes you'd like to make about this translation?"></textarea>
                 <button>Save Translation</button>
             </form>
+        </div>
+        <div>
+            <a href="/browse_terms">Browse Terms</a>
+        </div>
+        <div class="terms">
+            {% for term in terms %}
+            <p><a href="/view_term/{{term.id}}">{{ term.en }}</a><a href="/view_term/{{term.id}}">{{ term.fr }}</a></p>
+            {% endfor %}
         </div>
     </div>
     
