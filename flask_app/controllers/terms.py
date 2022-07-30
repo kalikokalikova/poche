@@ -59,22 +59,23 @@ def browse_terms():
     else:
         return redirect('/register_or_login')
 
+@app.route('/search_terms', methods=['post'])
+def search_terms():
+    data = {
+        'user_id': session['user_id'],
+        # have to put these bonus %s to make the %s show up inside the string quotes in the mysql query
+        'search_term': "%%" + request.form['search_term'] + "%%"
+    }
+    results = Term.search_terms(data)
+    if results:
+        return redirect('/results')
+    else:
+        # TODO some error messaging
+        return redirect('/browse_terms')
 
-
-# @app.route('/get_translation', methods=['post'])
-# def get_translation():
-#     print("I'm in the python function")
-#     params = {
-#         "q": "My cats are liquid",
-#         "source": "en",
-#         "target": "fr",
-#         "format": "text",
-#         "api_key": os.environ.get("LIBRETRANSLATE_KEY")
-#     }
-
-#     r = requests.post("https://libretranslate.com/translate", data=params)
-#     if not r.ok:
-#         raise Exception(r.text)
-#     if r.json().get("error"):
-#         return None
-#     return r.json()["translatedText"]
+@app.route('/results')
+def results():
+    if 'user_id' in session:
+        return render_template('results.html')
+    else:
+        return redirect('/register_or_login')

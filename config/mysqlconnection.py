@@ -14,12 +14,11 @@ class MySQLConnection:
         self.connection = connection
     # the method to query the database
     def query_db(self, query, data=None):
-        print("This is the  query:", query)
         with self.connection.cursor() as cursor:
             try:
                 query = cursor.mogrify(query, data)
                 print("Running Query:", query)
-     
+
                 cursor.execute(query, data)
                 if query.lower().find("insert") >= 0:
                     # INSERT queries will return the ID NUMBER of the row inserted

@@ -36,6 +36,13 @@ class Term:
         return connectToMySQL('poche_schema').query_db(query, data)
 
     @classmethod
+    def search_terms(cls, data):
+        query = "select * from terms where en like %(search_term)s and users_id = %(user_id)s;"
+        result = connectToMySQL('poche_schema').query_db(query, data)
+        print(result)
+        return result
+
+    @classmethod
     def get_fr_terms_to_browse(cls, data):
         query = "SELECT * FROM poche_schema.terms where users_id = %(id)s order by fr asc;"
         # returns records in alphabetical order by french words
