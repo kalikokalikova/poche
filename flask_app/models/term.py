@@ -18,8 +18,13 @@ class Term:
 
     @classmethod
     def get_all(cls, data):
-        query = "select * from terms where users_id = %(id)s;"
-        return connectToMySQL('poche_schema').query_db(query, data)
+        query = "select * from terms where users_id = %(id)s order by created_at desc;"
+        results = connectToMySQL('poche_schema').query_db(query, data)
+        all_terms = []
+        if len(results) > 0:
+            for r in results:
+                all_terms.append(cls(r))
+        return all_terms
 
     @classmethod
     def get_term_by_id(cls, data):
@@ -35,13 +40,13 @@ class Term:
     @classmethod
     def search_terms(cls, data):
         query = "select * from terms where ( en like %(search_terms)s or fr like %(search_terms)s ) and users_id = %(user_id)s;"
-        result = connectToMySQL('poche_schema').query_db(query, data)
-        if len(result) > 0:
-            terms_found = []
-            for r in result:
-                # TODO why will this not let me create a class instance with this result???? For now just returning a dictionary
-                terms_found.append(r)
-        return terms_found
+        results = connectToMySQL('poche_schema').query_db(query, data)
+        found_terms = []
+        if len(results) > 0:
+            for r in results:
+                # TODO WHY WON'T THIS LET ME TURN DICTS INTO CLASS??????? For now just returning dictionaries
+                found_terms.append(r)
+        return found_terms
 
     @classmethod
     # TODO make an english version of this
