@@ -3,6 +3,7 @@ import os
 import requests
 from flask import render_template, redirect, request, session
 from flask_app.models.term import Term
+from flask_app.models.user import User
 
 # Homepage
 @app.route('/')
@@ -10,6 +11,8 @@ def index():
     if 'user_id' in session:
         data = { 'id': session['user_id'] }
         terms = Term.get_all(data)
+        user = User.get_user_by_id(data)
+        session['first_name'] = user.first_name
         return render_template('index.html', terms=terms)
     else:
         return redirect('/register_or_login')

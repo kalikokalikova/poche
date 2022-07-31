@@ -7,9 +7,13 @@
     <title>Index</title>
 </head>
 <body>
+    <div class="nav-bar">
+        Welcome {{ session['first_name'] }}
+        <a href="/browse_terms">Browse saved Terms</a>
+        <a href="/logout"><button>Log out</button></a>
+    </div>
     <div class="container">
-        <h1>YOu're IN</h1>
-        <a href="/logout"><button>You're out</button></a>
+        <h1>Bienvenue Welcome</h1>
         <form onsubmit="translateMe(event)">
             <input type="text" name="term" id="term-to-translate">
             <input type="submit" value="Translate">
@@ -24,9 +28,6 @@
                 <textarea name="notes" cols="30" rows="10" placeholder="Any notes you'd like to make about this translation?"></textarea>
                 <button>Save Translation</button>
             </form>
-        </div>
-        <div>
-            <a href="/browse_terms">Browse Terms</a>
         </div>
         <div class="terms">
             {% for term in terms %}
