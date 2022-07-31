@@ -7,9 +7,14 @@
     <title>Results</title>
 </head>
 <body>
+    <!-- TODO Make every instance of the search term a bright color -->
     <div class="container">
-
-        <h1>REESULTS</h1>
+        <h1>Search results for {{ session['search_terms'] }}</h1>
+        {% for r in session.search_results %}
+            <div>
+                {{ r.en }} {{ r.fr }}
+            </div>
+        {% endfor %}
     </div>
     
 </body>

@@ -1,8 +1,6 @@
 from config.mysqlconnection import connectToMySQL
 from flask import flash
 
-
-
 class Term:
     def __init__(self, data):
         self.id = data['id']
@@ -15,7 +13,6 @@ class Term:
 
     @classmethod
     def save(cls, data):
-        print(data)
         query = "insert into terms (users_id, en, fr, notes) values ( %(user_id)s, %(en)s, %(fr)s, %(notes)s );"
         return connectToMySQL('poche_schema').query_db(query, data)
 
@@ -37,10 +34,14 @@ class Term:
 
     @classmethod
     def search_terms(cls, data):
-        query = "select * from terms where en like %(search_term)s and users_id = %(user_id)s;"
+        query = "select * from terms where ( en like %(search_terms)s or fr like %(search_terms)s ) and users_id = %(user_id)s;"
         result = connectToMySQL('poche_schema').query_db(query, data)
-        print(result)
-        return result
+        if len(result) > 0:
+            terms_found = []
+            for r in result:
+                # TODO why will this not let me create a class instance with this result???? For now just returning a dictionary
+                terms_found.append(r)
+        return terms_found
 
     @classmethod
     def get_fr_terms_to_browse(cls, data):
@@ -63,6 +64,10 @@ class Term:
 
             return terms_to_display
 
+    @classmethod
+    def delete_term(cls, data):
+        query = "delete from terms where id = %(id)s;"
+        return connectToMySQL('poche_schema').query_db(query, data)
 
     @staticmethod
     def validate_inputs(data):

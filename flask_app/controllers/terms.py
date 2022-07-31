@@ -1,5 +1,4 @@
 from flask_app import app
-# from flask import jsonify
 import os
 import requests
 from flask import render_template, redirect, request, session
@@ -28,7 +27,6 @@ def save_translation():
     else:
         print("oh shit")
         return redirect('/')
-    print(request.form)
     return redirect('/')
 
 @app.route('/view_term/<id>')
@@ -36,7 +34,6 @@ def view_term(id):
     data = { 'id': id }
     term = Term.get_term_by_id(data)
     if term:
-        print(term)
         return render_template('view_term.html', term=term)
     else:
         redirect('/')
@@ -63,11 +60,13 @@ def browse_terms():
 def search_terms():
     data = {
         'user_id': session['user_id'],
-        # have to put these bonus %s to make the %s show up inside the string quotes in the mysql query
-        'search_term': "%%" + request.form['search_term'] + "%%"
+        # have to put these bonus %% to make the % show up inside the string quotes in the mysql query
+        'search_terms': "%%" + request.form['search_term'] + "%%"
     }
     results = Term.search_terms(data)
     if results:
+        session['search_terms'] = request.form['search_term']
+        session['search_results'] = results
         return redirect('/results')
     else:
         # TODO some error messaging
@@ -79,3 +78,12 @@ def results():
         return render_template('results.html')
     else:
         return redirect('/register_or_login')
+
+@app.route('/delete/<id>')
+def delete_term(id):
+    data = {
+        'id': id
+    }
+    response = Term.delete_term(data)
+    #TODO messaging if something goes wrong
+    return redirect('/')
