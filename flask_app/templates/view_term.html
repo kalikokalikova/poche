@@ -28,7 +28,7 @@
                 <input type="hidden" name="id" value="{{term.id}}">
                 <label for="notes">Notes:</label>
                 <textarea name="notes" cols="30" rows="10" oninput="activateSave()">{{ term.notes }}</textarea>
-                <button class="save-term">Save</button>
+                <button class="save-term" style="display:none;">Save</button>
             </form>
         </p>
         <p><a href="/delete/{{term.id}}">Delete</a></p>
