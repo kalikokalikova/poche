@@ -33,6 +33,18 @@ class Term:
         return cls(result[0])
 
     @classmethod
+    def get_terms_by_letter(cls, data):
+        print(data)
+        query = "select * from terms where ( fr like %(letter)s or en like %(letter)s ) and users_id = %(users_id)s;"
+        results = connectToMySQL('poche_schema').query_db(query, data)
+        found_terms = []
+        if len(results) > 0:
+            for r in results:
+                # This is giving me the same problem, TypeError: Object of type Term is not JSON serializable
+                found_terms.append(r)
+        return found_terms
+
+    @classmethod
     def update_term(cls, data):
         query = "update terms set notes=%(notes)s where id=%(id)s;"
         return connectToMySQL('poche_schema').query_db(query, data)

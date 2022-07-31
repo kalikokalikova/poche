@@ -90,3 +90,17 @@ def delete_term(id):
     response = Term.delete_term(data)
     #TODO messaging if something goes wrong
     return redirect('/')
+
+@app.route('/view_terms_by_letter/<letter>')
+def view_terms_by_letter(letter):
+    data = {
+        "users_id": session['user_id'],
+        "letter": letter + "%%"
+    }
+    terms = Term.get_terms_by_letter(data)
+    if terms:
+        session['search_terms'] = letter
+        session['search_results'] = terms
+        return render_template('results.html')
+    else:
+        return redirect('/browse_terms')
