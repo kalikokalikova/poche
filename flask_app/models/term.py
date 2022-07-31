@@ -44,6 +44,7 @@ class Term:
         return terms_found
 
     @classmethod
+    # TODO make an english version of this
     def get_fr_terms_to_browse(cls, data):
         query = "SELECT * FROM poche_schema.terms where users_id = %(id)s order by fr asc;"
         # returns records in alphabetical order by french words

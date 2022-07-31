@@ -61,11 +61,11 @@ def search_terms():
     data = {
         'user_id': session['user_id'],
         # have to put these bonus %% to make the % show up inside the string quotes in the mysql query
-        'search_terms': "%%" + request.form['search_term'] + "%%"
+        'search_terms': "%%" + request.form['search_terms'] + "%%"
     }
     results = Term.search_terms(data)
     if results:
-        session['search_terms'] = request.form['search_term']
+        session['search_terms'] = request.form['search_terms']
         session['search_results'] = results
         return redirect('/results')
     else:
