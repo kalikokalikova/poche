@@ -8,11 +8,7 @@
 </head>
 <body>
     <div class="container">
-        <form action="/search_terms" method="post">
-            <label for="search_terms"></label>
-            <input type="text" name="search_terms">
-            <button>search my terms</button>
-        </form>
+        
         {% for dict in list_of_term_dicts %}
         <div>
             {% for letter in dict.keys() %}
