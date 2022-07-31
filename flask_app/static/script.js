@@ -32,7 +32,7 @@ async function translateMe(e) {
 
 function populateForm(translationData) {
     // TODO this div will be hidden by default and be shown when form is populated
-    document.getElementById("result-div").style.backgroundColor = "aquamarine";
+    document.getElementById("result-div").style.display = "block";
     document.getElementById("term-to-translate").value = "";
     document.getElementById("english").value = translationData.en;
     document.getElementById("french").value = translationData.fr;
