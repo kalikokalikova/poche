@@ -40,5 +40,5 @@ function populateForm(translationData) {
 
 function activateSave() {
     button = document.getElementsByClassName("save-term")[0];
-    button.style.display = "inline-block";
+    button.style.display = "block";
 };

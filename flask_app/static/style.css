@@ -13,6 +13,7 @@ body {
 }
 h1 {
     font-size: 1.9em;
+    text-align: center;
 }
 div {
     margin: 7px 0;
@@ -22,11 +23,18 @@ input {
     border-radius: 2px;
     padding: 2px 0 2px 4px;
 }
+input[type="text" i] {
+    width: 58%;
+}
+textarea {
+    padding: 5px;
+}
 table {
     background-color: white;
     padding: 7px;
-    margin: 5px 0;
+    margin: 5px auto;
     border-radius: 3px;
+    width: 100%;
 }
 th {
     font-weight: normal;
@@ -50,6 +58,10 @@ td {
     color: #474747;
     font-size: 14px;
     text-decoration: none;
+    margin-top: 5px;
+}
+.nav-bar {
+    padding: 8px;
 }
 .container {
     padding: 8px;
@@ -60,10 +72,12 @@ td {
 .english {
     color: #035b53;
     font-family: 'Times New Roman', Times, serif;
+    font-size: large;
 }
 .french {
     color: #a5069f;
     font-family: 'Times New Roman', Times, serif;
+    font-size: large;
 }
 .big-letter {
     text-transform: uppercase;
@@ -76,4 +90,7 @@ td {
     font-style: italic;
     font-size: smaller;
     color: #474747;
+}
+.no-underline {
+    text-decoration: none;
 }

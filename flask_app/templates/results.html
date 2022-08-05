@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="/static/style.css">
 
     <title>Results</title>
 </head>
@@ -23,11 +23,22 @@
     <!-- TODO Make every instance of the search term a bright color -->
     <div class="container">
         <h1>Search results for {{ session['search_terms'] }}</h1>
-        {% for r in session.search_results %}
-            <div>
-                {{ r.en }} {{ r.fr }}
-            </div>
-        {% endfor %}
+        <table>
+            <thead>
+            <tr>
+                <th>English</th>
+                <th>French</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for r in session.search_results %}
+                <tr>
+                    <td><a class="english" href="/view_term/{{r.id}}">{{ r.en }}</a></td>
+                    <td><a class="french" href="/view_term/{{r.id}}">{{ r.fr }}</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>            
     </div>
     
 </body>

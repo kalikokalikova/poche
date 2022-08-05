@@ -10,15 +10,14 @@
 </head>
 <body>
     <div class="nav-bar">
-        Welcome {{ session['first_name'] }}
-        <a href="/">home</a>
+        <div>Welcome {{ session['first_name'] }} <a href="/logout" style="text-decoration: none;"><button class="btn">Log out</button></a></div>
+        <div><a href="/">home</a></div>
         <a href="/browse_terms">browse saved terms</a>
         <form action="/search_terms" method="post">
             <label for="search_terms"></label>
             <input type="text" name="search_terms">
             <button class="btn">search saved terms</button>
         </form>
-        <a href="/logout" style="text-decoration: none;"><button class="btn">Log out</button></a>
     </div>
     <div class="container">
         <h1>Bienvenue Welcome</h1>

@@ -21,17 +21,17 @@
         <a href="/logout" style="text-decoration: none;"><button class="btn">Log out</button></a>
     </div>
     <div class="container">
-        <p>English: <span>{{ term.en }}</span></p>
-        <p>French: <span>{{ term.fr }}</span></p>
-        <p>
+        <div>English: <span class="english">{{ term.en }}</span></div>
+        <div>French: <span class="french">{{ term.fr }}</span></div>
+        <div>
             <form action="/update_term" method="post">
                 <input type="hidden" name="id" value="{{term.id}}">
                 <label for="notes">Notes:</label>
                 <textarea name="notes" cols="30" rows="10" oninput="activateSave()">{{ term.notes }}</textarea>
-                <button class="save-term" style="display:none;">Save</button>
+                <button class="save-term btn" style="display:none;">Save</button>
             </form>
-        </p>
-        <p><a href="/delete/{{term.id}}">Delete</a></p>
+            <div><a class="no-underline" href="/delete/{{term.id}}"><button class="btn">Delete</button></a></div>
+        </div>
     </div>
     <script src="/static/script.js"></script>
 </body>
