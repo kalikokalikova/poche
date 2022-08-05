@@ -1,0 +1,25 @@
+Poche -- a translation tool. The phrases you actually need, right in your pocket.
+
+Are you interested in learning a new language, but existing platforms aren't teaching you the phrases you want to learn? Are you traveling for some niche interest and need to know how to say a bunch of weirdly specific things? This app allows you to search for any word or phrase and then save the translation to your account. Your translated words and phrases are easily searchable, browseable, and perhaps in the fullness of time, taggable.
+
+Stack:
+Python/Flask
+Smattering of javascript
+
+MVP Features:
+English to French
+Validated registration/login
+Translation via 3rd party API (libretranslate)
+Ability to add notes to translated phrase
+Ability to search database for previously translated phrases
+Ability to browse by first letter of phrase
+Ability view/edit/delete translated phrase
+
+If I have time:
+Ability to tag translations and then search by tag
+
+Maybe someday:
+Other languages????
+
+github repo
+https://github.com/kalikokalikova/poche

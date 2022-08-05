@@ -33,7 +33,6 @@ th {
     padding: 3px;
 }
 td {
-    font-family: 'Times New Roman', Times, serif;
     padding: 3px;
 }
 .btn {
@@ -60,7 +59,21 @@ td {
 }
 .english {
     color: #035b53;
+    font-family: 'Times New Roman', Times, serif;
 }
 .french {
     color: #a5069f;
+    font-family: 'Times New Roman', Times, serif;
+}
+.big-letter {
+    text-transform: uppercase;
+    text-decoration: none;
+    color: black;
+    font-size: larger;
+    margin-right: 6px;
+}
+.decorative {
+    font-style: italic;
+    font-size: smaller;
+    color: #474747;
 }

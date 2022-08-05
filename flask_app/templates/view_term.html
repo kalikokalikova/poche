@@ -11,14 +11,14 @@
 <body>
     <div class="nav-bar">
         Welcome {{ session['first_name'] }}
-        <a href="/">Home</a>
+        <a href="/">home</a>
         <a href="/browse_terms">browse saved terms</a>
-        <a href="/logout"><button>Log out</button></a>
         <form action="/search_terms" method="post">
             <label for="search_terms"></label>
             <input type="text" name="search_terms">
-            <button>search saved terms</button>
+            <button class="btn">search saved terms</button>
         </form>
+        <a href="/logout" style="text-decoration: none;"><button class="btn">Log out</button></a>
     </div>
     <div class="container">
         <p>English: <span>{{ term.en }}</span></p>
