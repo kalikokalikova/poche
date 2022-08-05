@@ -33,6 +33,7 @@ input[type="text" i] {
 }
 textarea {
     padding: 5px;
+    width: 90%;
 }
 table {
     background-color: white;
@@ -148,8 +149,11 @@ td {
     }
 }
 
-@media (max-width: 850px) {
+@media (max-width: 900px) {
     table {
         padding: 35px;
+    }
+    textarea {
+        width: 100%;
     }
 }

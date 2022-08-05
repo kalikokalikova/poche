@@ -29,7 +29,7 @@
             <form action="/update_term" method="post">
                 <input type="hidden" name="id" value="{{term.id}}">
                 <label for="notes">Notes:</label>
-                <textarea name="notes" cols="30" rows="10" oninput="activateSave()">{{ term.notes }}</textarea>
+                <textarea name="notes" cols="30" rows="10" onclick="activateSave()">{{ term.notes }}</textarea>
                 <button class="save-term btn" style="display:none;">Save</button>
             </form>
             <div><a class="no-underline" href="/delete/{{term.id}}"><button class="btn">Delete</button></a></div>
