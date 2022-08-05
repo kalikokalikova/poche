@@ -10,19 +10,22 @@
 </head>
 <body>
     <div class="nav-bar">
-        <div>Welcome {{ session['first_name'] }} <a href="/logout" style="text-decoration: none;"><button class="btn">Log out</button></a></div>
-        <div><a href="/">home</a></div>
-        <a href="/browse_terms">browse saved terms</a>
-        <form action="/search_terms" method="post">
-            <label for="search_terms"></label>
+        <div class="nav-item">
+            <h3>Welcome {{ session['first_name'] }}</h3>
+            <a class="nav-item" href="/logout" style="text-decoration: none;"><button class="btn">Log out</button></a>
+        </div>
+        <div class="nav-item"><a href="/">home</a></div>
+        <div class="nav-item"><a class="nav-item"href="/browse_terms">browse saved terms</a>
+        </div>
+        <form class="nav-item" action="/search_terms" method="post" style="display:inline;">
             <input type="text" name="search_terms">
             <button class="btn">search saved terms</button>
         </form>
     </div>
     <div class="container">
-        <h1>Bienvenue Welcome</h1>
+        <h1><i>Bienvenue</i> Welcome</h1>
         <form onsubmit="translateMe(event)">
-            <input type="text" name="term" id="term-to-translate">
+            <input type="text" name="term" id="term-to-translate" class="gradient-magic" placeholder="Type text to be translated here...">
             <input class="btn" type="submit" value="Translate">
         </form>
         <div id="result-div" style="display:none;">
@@ -38,7 +41,7 @@
                 </div>
 
                 <textarea name="notes" cols="30" rows="10" placeholder="Any notes you'd like to make about this translation?"></textarea>
-                <button class="btn">Save Translation</button>
+                <div><button class="btn">Save Translation</button></div>
             </form>
         </div>
         <div class="terms">

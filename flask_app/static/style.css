@@ -14,6 +14,11 @@ body {
 h1 {
     font-size: 1.9em;
     text-align: center;
+    margin-bottom: 30px;
+}
+h3 {
+    display: inline-block;
+    font-weight: 400;
 }
 div {
     margin: 7px 0;
@@ -24,7 +29,7 @@ input {
     padding: 2px 0 2px 4px;
 }
 input[type="text" i] {
-    width: 58%;
+    width: 50%;
 }
 textarea {
     padding: 5px;
@@ -42,6 +47,7 @@ th {
 }
 td {
     padding: 3px;
+    width: 50%;
 }
 .btn {
     padding: 1px 7px;
@@ -93,4 +99,57 @@ td {
 }
 .no-underline {
     text-decoration: none;
+}
+.gradient-magic {
+    border-width: 4px;
+    border-style: solid;
+    border-image: linear-gradient(to right, goldenrod, darkorchid) 1;
+}
+
+@media (min-width: 501px) {
+    /* h1 {
+        color: red;
+    } */
+    h3 {
+        margin-right: 10px;
+    }
+    table {
+        padding: 60px;
+    }
+    th {
+        padding-bottom: 25px;
+        font-size: 20px;
+        text-align: left;
+    }
+    input[name="term" i] {
+        height: 18px;
+        width: 100%;
+    }
+    textarea {
+        width: 50%;
+    }
+    label {
+        display: block;
+    }
+    .container {
+        width: 60%;
+        margin: 0 auto;
+    }
+    .nav-bar {
+        width: 90%;
+        margin: 7px auto 50px;
+    }
+    .nav-item {
+        display: inline-block;
+        margin-right: 20px;
+    }
+    .btn {
+        /* display: inline; */
+    }
+}
+
+@media (max-width: 850px) {
+    table {
+        padding: 35px;
+    }
 }
