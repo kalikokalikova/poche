@@ -56,6 +56,7 @@ class Term:
         found_terms = []
         if len(results) > 0:
             for r in results:
+                r = cls.add_spans(r, data['naked_search_terms'])
                 # TODO WHY WON'T THIS LET ME TURN DICTS INTO CLASS??????? For now just returning dictionaries
                 found_terms.append(r)
         return found_terms
@@ -92,4 +93,10 @@ class Term:
         # checking that both strings are not empty
         #TODO flash messaging
         return data['en'] and data['fr']
+
+    @staticmethod
+    def add_spans(search_result, term):
+        search_result['en'] = search_result['en'].replace(term, "<span class='english'>"+term+"</span>")
+        search_result['fr'] = search_result['fr'].replace(term, "<span class='french'>"+term+"</span>")
+        return search_result
 

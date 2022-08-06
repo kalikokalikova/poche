@@ -22,7 +22,7 @@
             <button class="btn">search saved terms</button>
         </form>
     </div>
-    <!-- TODO Make every instance of the search term a bright color -->
+
     <div class="container">
         <h1>Search results for "{{ session['search_terms'] }}"</h1>
         <table>
@@ -35,8 +35,8 @@
             <tbody>
                 {% for r in session.search_results %}
                 <tr>
-                    <td><a class="english" href="/view_term/{{r.id}}">{{ r.en }}</a></td>
-                    <td><a class="french" href="/view_term/{{r.id}}">{{ r.fr }}</a></td>
+                    <td><a class="results-item" href="/view_term/{{r.id}}">{{ r.en|safe }}</a></td>
+                    <td><a class="results-item" href="/view_term/{{r.id}}">{{ r.fr|safe }}</a></td>
                 </tr>
                 {% endfor %}
             </tbody>

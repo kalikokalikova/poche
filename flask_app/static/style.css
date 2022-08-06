@@ -95,12 +95,17 @@ td {
     margin-top: 16px;
 }
 .english {
-    color: #035b53;
+    color: #0c756c;
     font-family: 'Times New Roman', Times, serif;
     font-size: large;
 }
 .french {
     color: #a5069f;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: large;
+}
+.results-item {
+    color: #444444;
     font-family: 'Times New Roman', Times, serif;
     font-size: large;
 }
