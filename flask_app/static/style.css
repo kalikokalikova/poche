@@ -141,6 +141,9 @@ td {
     color: red;
     font-style: italic;
 }
+.flash-messages {
+    text-align: center;
+}
 .flex-daddy {
     display: flex;
 }

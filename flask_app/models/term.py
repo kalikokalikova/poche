@@ -33,7 +33,7 @@ class Term:
         return cls(result[0])
 
     @classmethod
-    def get_terms_by_letter(cls, data):
+    def get_terms_by_first_letter(cls, data):
         print(data)
         query = "select * from terms where ( fr like %(letter)s or en like %(letter)s ) and users_id = %(users_id)s;"
         results = connectToMySQL('poche_schema').query_db(query, data)
@@ -59,6 +59,8 @@ class Term:
                 r = cls.add_spans(r, data['naked_search_terms'])
                 # TODO WHY WON'T THIS LET ME TURN DICTS INTO CLASS??????? For now just returning dictionaries
                 found_terms.append(r)
+        if len(found_terms) == 0:
+            flash("No phrases were found containing that string. Try searching for something else")
         return found_terms
 
     @classmethod
@@ -90,9 +92,12 @@ class Term:
 
     @staticmethod
     def validate_inputs(data):
+        is_valid = True
         # checking that both strings are not empty
-        #TODO flash messaging
-        return data['en'] and data['fr']
+        if (not data['en']) or (not data['fr']):
+            flash("Cannot save to database without both English and French")
+            is_valid = False
+        return is_valid
 
     @staticmethod
     def add_spans(search_result, term):

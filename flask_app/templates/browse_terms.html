@@ -9,6 +9,15 @@
     <title>Browse Terms</title>
 </head>
 <body>
+    <div class="flash-messages">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <p class="error">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
     <div class="nav-bar">
         <div class="nav-item">
             <h3>Welcome {{ session['first_name'] }}</h3>
@@ -23,23 +32,28 @@
         </form>
     </div>
     <div class="container">
-        
-        {% for dict in list_of_term_dicts %}
+        {% if list_of_term_dicts|length == 0 %}
         <div>
-            {% for letter in dict.keys() %}
+            You have no translated phrases yet. <a href="/">Translate some stuff</a> to see it here!
+        </div>
+        {% else %}
+            {% for dict in list_of_term_dicts %}
             <div>
-                <a class="big-letter" href="/view_terms_by_letter/{{letter}}">{{ letter }}</a>
-                {% for v in dict.values() %}
-                <span>
-                    {% for term, object in v.items() %}
-                    <a href="/view_term/{{object.id}}">{{ term }}</a>
+                {% for letter in dict.keys() %}
+                <div>
+                    <a class="big-letter" href="/view_terms_by_letter/{{letter}}">{{ letter }}</a>
+                    {% for v in dict.values() %}
+                    <span>
+                        {% for term, object in v.items() %}
+                        <a href="/view_term/{{object.id}}">{{ term }}</a>
+                        {% endfor %}
+                    </span>
                     {% endfor %}
-                </span>
+                </div>
                 {% endfor %}
             </div>
             {% endfor %}
-        </div>
-        {% endfor %}
+        {% endif %}
     </div>
     
 </body>

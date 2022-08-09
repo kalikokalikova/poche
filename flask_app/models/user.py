@@ -46,6 +46,7 @@ class User:
         if len(result) > 0:
             return cls( result[0] )
         else:
+            print("** Could not find user by email **")
             return False
 
     @classmethod
@@ -55,6 +56,7 @@ class User:
         if len(result) > 0:
             return cls( result[0] )
         else:
+            print("** Could not find user by id **")
             return False
 
     @staticmethod
@@ -88,7 +90,7 @@ class User:
     def validate_login(data):
 
         user = User.get_user_by_email(data)
-        if not user:
+        if not user: # Could not find user with that email
             flash("invalid credentials", "login")
             return False
 
