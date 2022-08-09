@@ -137,6 +137,10 @@ td {
     padding: 12px;
     background-color: white;
 }
+.error {
+    color: red;
+    font-style: italic;
+}
 .flex-daddy {
     display: flex;
 }
