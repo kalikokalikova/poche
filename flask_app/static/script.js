@@ -24,7 +24,6 @@ async function translateMe(e) {
 
         });
         result = await res.json();
-        // TODO put in some kind of waiting messaging, perhaps a party cat?
 
         // ??? Will it ever be the case that this object tries to populate with results that haven't arrived yet?
         translationData = {
